@@ -18,7 +18,7 @@ class AbstractUnstableTest(AbstractCatkinWorkspaceTest):
     def setupWorkspaceContents(self):
         rosinstall(self.workspacedir,
                    os.path.join(os.path.dirname(__file__),
-                                'test.rosinstall'))
+                                'test.rosinstall-for-test'))
         create_catkin_workspace(self.workspacedir)
 
     def tearDown(self):
