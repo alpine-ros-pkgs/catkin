@@ -1,17 +1,17 @@
-import imp
 import os
 import shutil
 import tempfile
 import unittest
 
+from .imp import load_source
 try:
     from unittest.mock import Mock
 except ImportError:
     from mock import Mock
 
-imp.load_source('parse_package_xml',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'cmake', 'parse_package_xml.py'))
+load_source('parse_package_xml',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'cmake', 'parse_package_xml.py'))
 
 from parse_package_xml import _get_output  # noqa: E402
 from parse_package_xml import main  # noqa: E402

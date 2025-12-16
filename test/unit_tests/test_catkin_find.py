@@ -1,10 +1,11 @@
-import imp
 import os
 import unittest
 
-imp.load_source('catkin_find',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'bin', 'catkin_find'))
+from .imp import load_source
+
+load_source('catkin_find',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'bin', 'catkin_find'))
 
 from catkin_find import parse_args  # noqa: E402
 

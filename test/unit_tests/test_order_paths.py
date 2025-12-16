@@ -1,10 +1,11 @@
-import imp
 import os
 import unittest
 
-imp.load_source('order_paths',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'cmake', 'order_paths.py'))
+from .imp import load_source
+
+load_source('order_paths',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'cmake', 'order_paths.py'))
 
 from order_paths import order_paths  # noqa: E402
 

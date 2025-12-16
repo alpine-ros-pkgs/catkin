@@ -1,12 +1,13 @@
 from __future__ import print_function
 
-import imp
 import os
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
+
+from .imp import load_source
 
 try:
     from catkin.builder import extract_cmake_and_make_arguments
@@ -15,9 +16,9 @@ except ImportError as e:
         'Please adjust your pythonpath before running this test: %s' % str(e)
     )
 
-imp.load_source('catkin_make_isolated',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'bin', 'catkin_make_isolated'))
+load_source('catkin_make_isolated',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'bin', 'catkin_make_isolated'))
 
 from catkin_make_isolated import handle_cmake_args  # noqa: E402
 from catkin_make_isolated import main  # noqa: E402
