@@ -1,0 +1,23 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  packages: read
+  issues: write         # posting and hiding bot comments
+  pull-requests: write  # posting and hiding bot comments
+
+jobs:
+  test:
+    uses: alpine-ros/alpine-ros-ci-workflows/.github/workflows/ros1.yaml@main
+    with:
+      manifest-files: package.xml
+      no-rosinstall-files: true
+      enable-bot-comment: true
+      abuild-env: CTEST_OUTPUT_ON_FAILURE=1
+    secrets:
+      bot-comment-token: ${{ secrets.GITHUB_TOKEN }}

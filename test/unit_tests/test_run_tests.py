@@ -1,12 +1,13 @@
-import imp
 import os
 import shutil
 import tempfile
 import unittest
 
-imp.load_source('run_tests',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'cmake', 'test', 'run_tests.py'))
+from .imp import load_source
+
+load_source('run_tests',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'cmake', 'test', 'run_tests.py'))
 
 from run_tests import main  # noqa: E402
 

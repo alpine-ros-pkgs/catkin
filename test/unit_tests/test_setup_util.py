@@ -17,10 +17,12 @@ data = configure_file(os.path.join(os.path.dirname(__file__), '..', '..', 'cmake
                       })
 with tempfile.NamedTemporaryFile('w+') as setup_util_file:
     setup_util_file.write(data)
-    setup_util_file.seek(0)
+    setup_util_file.flush()
 
-    import imp
-    imp.load_source('setup_util', setup_util_file.name, setup_util_file.file)
+    from .imp import load_source
+    print(setup_util_file.name)
+
+    load_source('setup_util', setup_util_file.name)
 
 from setup_util import CATKIN_MARKER_FILE  # noqa: E402
 from setup_util import _get_workspaces  # noqa: E402

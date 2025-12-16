@@ -1,12 +1,13 @@
-import imp
 import os
 import shutil
 import tempfile
 import unittest
 
-imp.load_source('interrogate_setup_dot_py',
-                os.path.join(os.path.dirname(__file__),
-                             '..', '..', 'cmake', 'interrogate_setup_dot_py.py'))
+from .imp import load_source
+
+load_source('interrogate_setup_dot_py',
+            os.path.join(os.path.dirname(__file__),
+                         '..', '..', 'cmake', 'interrogate_setup_dot_py.py'))
 
 from interrogate_setup_dot_py import _create_mock_setup_function  # noqa: E402
 from interrogate_setup_dot_py import _get_locations  # noqa: E402

@@ -1,10 +1,11 @@
-import imp
 import os
 import shutil
 import tempfile
 import unittest
 
-imp.load_source('download_checkmd5',
+from .imp import load_source
+
+load_source('download_checkmd5',
                 os.path.join(os.path.dirname(__file__),
                              '..', '..', 'cmake', 'test', 'download_checkmd5.py'))
 
