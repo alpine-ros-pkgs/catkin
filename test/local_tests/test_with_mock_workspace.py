@@ -108,12 +108,12 @@ class MockTest(AbstractCatkinWorkspaceTest):
                  'CMAKE_PREFIX_PATH': ['/bar'],
                  'CATKIN_GLOBAL_LIB_DESTINATION': '/glob-dest/lib',
                  'CATKIN_GLOBAL_BIN_DESTINATION': '/glob-dest/bin',
-                 'PYTHON_INSTALL_DIR': '/foo/dist-packages'}
-        result = em.expand(template, gdict,
-                           source_root_dir=self.workspacedir,
-                           whitelisted_packages=None,
-                           blacklisted_packages=None,
-                           underlay_workspaces=None)
+                 'PYTHON_INSTALL_DIR': '/foo/dist-packages',
+                 'source_root_dir': self.workspacedir,
+                 'whitelisted_packages': None,
+                 'blacklisted_packages': None,
+                 'underlay_workspaces': None}
+        result = em.expand(template, gdict)
         self.assertTrue('set(CATKIN_ORDERED_PACKAGES "")' in result, result)
         self.assertTrue('set(CATKIN_ORDERED_PACKAGE_PATHS "")' in result, result)
         self.assertTrue('set(CATKIN_ORDERED_PACKAGES_IS_META "")' in result, result)
