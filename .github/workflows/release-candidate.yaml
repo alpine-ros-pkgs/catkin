@@ -1,0 +1,21 @@
+name: release-candidate
+on:
+  issues:
+    types: [opened, reopened, edited]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    if: startsWith(github.event.issue.title, 'Release ')
+    uses: alpine-ros/alpine-ros-ci-workflows/.github/workflows/ros1-release-candidate.yaml@main
+    with:
+      release-title: ${{ github.event.issue.title }}
+      branch: master
+      git-user: alpine-ros-bot
+      git-email: 214657941+alpine-ros-bot@users.noreply.github.com
+      pr-body: "close #${{ github.event.issue.number }}"
+      pr-assignee: ${{ github.actor }}
+    secrets:
+      token: ${{ secrets.ARP_GITHUB_TOKEN }}
