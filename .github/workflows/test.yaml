@@ -18,5 +18,6 @@ jobs:
       manifest-files: package.xml
       no-rosinstall-files: true
       enable-bot-comment: true
+      abuild-env: CTEST_OUTPUT_ON_FAILURE=1
     secrets:
       bot-comment-token: ${{ secrets.GITHUB_TOKEN }}
