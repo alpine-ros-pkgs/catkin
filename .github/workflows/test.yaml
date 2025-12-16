@@ -16,7 +16,7 @@ jobs:
     uses: alpine-ros/alpine-ros-ci-workflows/.github/workflows/ros1.yaml@main
     with:
       manifest-files: package.xml
-      rosinstall-files: " "
+      no-rosinstall-files: true
       enable-bot-comment: true
     secrets:
       bot-comment-token: ${{ secrets.GITHUB_TOKEN }}
