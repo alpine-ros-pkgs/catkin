@@ -136,7 +136,6 @@ list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")""" in result, result)
     def test_metapackage(self):
         dstdir = os.path.join(self.workspacedir, 'meta')
         shutil.copytree(os.path.join(MOCK_DIR, 'src', 'meta'), dstdir)
-        self.cmake(CATKIN_WHITELIST_PACKAGES='meta',
-                   CATKIN_DPKG_BUILDPACKAGE_FLAGS='-d;-S;-us;-uc')
+        self.cmake(CATKIN_WHITELIST_PACKAGES='meta')
         self.assertTrue(os.path.exists(self.builddir + '/meta'))
         succeed(MAKE_CMD, cwd=self.builddir)
