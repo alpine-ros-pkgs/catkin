@@ -132,3 +132,10 @@ list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")""" in result, result)
         # catkin itself filtered out
         self.assertFalse('list(APPEND CATKIN_ORDERED_PACKAGES "catkin"' in result, result)
         self.assertEqual(38, len(result.splitlines()))
+
+    def test_metapackage(self):
+        dstdir = os.path.join(self.workspacedir, 'meta')
+        shutil.copytree(os.path.join(MOCK_DIR, 'src', 'meta'), dstdir)
+        self.cmake(CATKIN_WHITELIST_PACKAGES='meta')
+        self.assertTrue(os.path.exists(self.builddir + '/meta'))
+        succeed(MAKE_CMD, cwd=self.builddir)
